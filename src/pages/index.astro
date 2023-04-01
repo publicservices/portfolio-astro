@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import ClientLink from '../components/ClientLink.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const clients = (await getCollection('clients'));
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<main>
+			<article>
+				Based in Berlin, Sylvain Maretto is a (lead) product designer
+currently freelancing remotely. Previously he gigged or held senior
+and lead designer positions at
+			</article>
+			<article>
+				{
+					clients.map((client, index) => {
+						const lastItem = index + 1 === clients.length
+						return (
+							<ClientLink
+								lastItem={lastItem}
+								title={client.data.title}
+								image={client.data.heroImage}
+							/>
+						)
+					})
+				}{ '.' }
+			</article>
+		</main>
+		<footer>
+			Need some design work, strategy or management help?
+			<a href="mailto:sylvain.maretto@gmail.com">email me</a>, or <a href="https://linkedin.com/in/sylvain-maretto">linkedin</a>
+		</footer>
+	</body>
+</html>
+
+<style>
+	main {
+		flex-grow: 1;
+	}
+	main article {
+		display: inline;
+	}
+	main,
+	footer {
+		padding: var(--size);
+		font-size: 1.5rem;
+	}
+	a {
+		text-decoration: none;
+		color: var(--color-text);
+	}
+</style>

@@ -1,0 +1,39 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'a'>;
+
+const { image, lastItem, title, ...props } = Astro.props;
+---
+
+<span class:list={[ {lastItem: lastItem} ]}>
+	 {title}{ !lastItem ? ',' : ''}
+	 <img src={image} />
+</span>
+<style>
+	span {
+		display: inline-block;
+		text-decoration: none;
+		position: relative;
+		cursor: pointer;
+	}
+	span:not(.lastItem) {
+		margin-right: calc(var(--size) / 4);
+	}
+
+	img {
+		display: none;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		top: 100%;
+		left: 0;
+		transform: translate(-50%, 0);
+		max-width: 20rem;
+		z-index: 1;
+	}
+
+	span:hover img {
+		display: block;
+	}
+</style>
