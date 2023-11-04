@@ -1,5 +1,5 @@
 ---
 title: "Tourradar"
 description: "tourradar"
-heroImage: "/tourradar.jpg"
+heroImage: "tourradar.jpg"
 ---

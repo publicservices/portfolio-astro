@@ -1,5 +1,5 @@
 ---
 title: "Zalando"
 description: "Zalando retails"
-heroImage: "/zalando.jpg"
+heroImage: "zalando.jpg"
 ---
