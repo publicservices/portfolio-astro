@@ -1,4 +1,5 @@
 # portfolio
+A portfolio made with [astro](https://astro.build/) as a demo site.
 
 ## Development
 
